@@ -1,4 +1,3 @@
-//const MongoClient = require('mongodb').MongoClient;
 const { MongoClient, ObjectID } = require("mongodb");
 
 MongoClient.connect("mongodb://localhost:27017/TodoApp", (err, db) => {
@@ -8,32 +7,44 @@ MongoClient.connect("mongodb://localhost:27017/TodoApp", (err, db) => {
   console.log("Connected to MongoDB server");
 
 /*   //deleteMany
-  db.collection('Todos').deleteMany({
-    text: 'Eat lunch'
-  }).then((result) => {
-    console.log(result);
-  }, (err) => {
-    console.log('Unable to fetch todos', err);
-  }); */
+  db.collection("Users")
+    .deleteMany({
+      age: 25,
+    })
+    .then(
+      (result) => {
+        console.log(result);
+      },
+      (err) => {
+        console.log("Unable to fetch users", err);
+      }
+    ); */
 
 /*   //deleteOne
-  db.collection('Todos').deleteOne({
-    text: 'Eat lunch'
-  }).then((result) => {
-    console.log(result);
-  }, (err) => {
-    console.log('Unable to fetch todos', err);
-  }); */
+  db.collection("Users")
+    .deleteOne({
+      name: "Andrew",
+    })
+    .then(
+      (result) => {
+        console.log(result);
+      },
+      (err) => {
+        console.log("Unable to fetch users", err);
+      }
+    ); */
 
   //findOneAndDelete
-  db.collection('Todos').findOneAndDelete({
-    text: 'Eat lunch'
-  }).then((result) => {
-    console.log(result);
-  }, (err) => {
-    console.log('Unable to fetch todos', err);
-  });
-
-
-  // db.close();
+  db.collection("Users")
+    .findOneAndDelete({
+      name: "Lester",
+    })
+    .then(
+      (result) => {
+        console.log(result);
+      },
+      (err) => {
+        console.log("Unable to fetch users", err);
+      }
+    );
 });
