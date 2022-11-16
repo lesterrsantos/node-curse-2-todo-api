@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 
 // var user = {
-//   email: 'lester.santos@datys.cu',
+//   email: 'leste@datys.cu',
 //   password: 'asdasdafsdgfsdfgfgg',
 //   tokens: [{
 //     access: 'auth',
