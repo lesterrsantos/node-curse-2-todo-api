@@ -12,6 +12,9 @@ const _ = require("lodash");
 //   }]
 // }
 
+// the unique: true property is not a validator instead is a field for create an index
+// in mongoDb if the collection has an index by the field and the user try to add
+// new document with the same value as previous it throw an Exception
 var UserSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -61,6 +64,21 @@ UserSchema.methods.generateAuthToken = function () {
 
   return user.save().then(() => {
     return token;
+  });
+};
+
+UserSchema.statics.findByToken = function (token) {
+  var User = this;
+  var decoded;
+
+  try {
+    decoded = jwt.verify(token, "abc123");
+  } catch (e) {}
+
+  return User.findOne({
+    _id: decoded._id,
+    "tokens.token": token,
+    "tokens.access": "auth",
   });
 };
 

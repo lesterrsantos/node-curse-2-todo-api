@@ -125,6 +125,17 @@ app.post("/users", (req, res) => {
     });
 });
 
+app.get("users/me", (req, res) => {
+  var token = req.header("x-auth");
+
+  User.findByToken(token).then((user) => {
+    if (!user) {
+    }
+
+    res.send(user);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Started up at port ${port}`);
 });
