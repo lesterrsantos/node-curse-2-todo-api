@@ -115,6 +115,7 @@ app.post("/users", (req, res) => {
   user
     .save()
     .then(() => {
+      //user.generateAuthToken() is a call to instance method
       return user.generateAuthToken();
     })
     .then((token) => {
@@ -128,6 +129,7 @@ app.post("/users", (req, res) => {
 app.get("users/me", (req, res) => {
   var token = req.header("x-auth");
 
+  //User.findByToken() is a call to model method
   User.findByToken(token).then((user) => {
     if (!user) {
     }

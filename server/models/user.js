@@ -60,6 +60,8 @@ UserSchema.methods.generateAuthToken = function () {
     .sign({ _id: user._id.toHexString(), access }, "abc123")
     .toString();
 
+  // user.tokens.push({access, token});
+
   user.tokens = user.tokens.concat([{ access, token }]);
 
   return user.save().then(() => {
