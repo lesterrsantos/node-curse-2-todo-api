@@ -1,4 +1,3 @@
-const { model } = require("mongoose");
 var { User } = require("./../models/user");
 
 var authenticate = (req, res, next) => {
@@ -15,7 +14,7 @@ var authenticate = (req, res, next) => {
       req.token = token;
       next();
     })
-    .catch((e) => {
+    .catch((err) => {
       res.status(401).send();
     });
 };
